@@ -1,4 +1,6 @@
 <div class="container">
+  <%= render "shared/error_messages", object: @new_book %>
+
   <div class="row">
     <div class="col-md-3">
       <h2 class="mb-3">User info</h2>
@@ -18,34 +20,14 @@
         </tbody>
       </table>
 
-      <% if @user == current_user %>
-        <div class="mb-3">
-          <%= link_to edit_user_path(@user.id), class: "btn btn-outline-secondary col-lg-3" do %>
-            <i class="fa-solid fa-user-gear"></i>
-          <% end %>
-        </div>
-      <% else %>
-        <div class="mb-3">
-          <%= link_to user_path(current_user.id), class: "btn btn-outline-secondary col-lg-3" do %>
-            <i class="fa-solid fa-user-gear"></i>
-          <% end %>
-        </div>
-      <% end %>
+      <div class="mb-3">
+        <%= link_to edit_user_path(@user.id), class: "btn btn-outline-secondary col-12" do %>
+          <i class="fa-solid fa-user-gear"></i>
+        <% end %>
+      </div>
 
       <h2 class="mb-3">New Book</h2>
-
-      <%= form_with model: @new_book do |f| %>
-        <div class="form_group mb-3">
-          <%= f.label :title, "Title" %><br />
-          <%= f.text_field :title, class: "form-control" %>
-        </div>
-        <div class="form_group mb-3">
-          <%= f.label :body, "Opinion" %><br />
-          <%= f.text_area :body, class: "form-control", rows: "3" %>
-        </div>
-
-        <%= f.submit "Create Book", class: "btn btn-success" %>
-      <% end %>
+      <%= render "shared/new_book", new_book: @new_book %>
     </div>
 
     <div class="col-md-8 offset-md-1">

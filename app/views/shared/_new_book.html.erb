@@ -1,0 +1,12 @@
+<%= form_with model: new_book do |f| %>
+  <div class="form_group mb-3">
+    <%= f.label :title, "Title" %><br />
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
+  <div class="form_group mb-3">
+    <%= f.label :body, "Opinion" %><br />
+    <%= f.text_area :body, class: "form-control", rows: "3" %>
+  </div>
+
+  <%= f.submit "Create Book", class: "btn btn-success" %>
+<% end %>
