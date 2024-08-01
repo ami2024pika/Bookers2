@@ -6,7 +6,7 @@
       <h2 class="mb-3">User info</h2>
       <%= render "shared/user_info", user: @book.user %>
 
-      <h2 class="mb-3">New Book</h2>
+      <h2 class="mb-3">New book</h2>
       <%= render "shared/new_book", new_book: @new_book %>
     </div>
 
@@ -15,7 +15,12 @@
 
       <table class="table">
         <tbody>
-          <td><%= image_tag @book.user.get_profile_image(100, 100) %><br><%= link_to @book.user.name, user_path(@book.user.id) %></td>
+          <td>
+            <%= link_to user_path(@book.user.id) do %>
+              <%= image_tag @book.user.get_profile_image(100, 100) %>
+            <% end %>
+            <br><%= link_to @book.user.name, user_path(@book.user.id) %>
+          </td>
           <td><%= link_to @book.title, book_path(@book.id) %></td>
           <td><%= @book.body %></td>
 
