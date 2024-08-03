@@ -1,8 +1,10 @@
 <% if object.errors.any? %>
-  <p class="font-weight-bold"><%= object.errors.count %> errors prohibited this obj from being saved:</p>
-  <ul>
-    <% object.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
+  <div class="alert alert-danger">
+    <p class="font-weight-bold"><%= object.errors.count %> errors prohibited this obj from being saved:</p>
+    <ul>
+      <% object.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
 <% end %>

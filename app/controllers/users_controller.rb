@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      flash[:notice] = "User was successfully updated."
+      flash[:success] = "User was successfully updated."
       redirect_to user_path(@user.id)
     else
       render :edit
@@ -36,7 +36,7 @@ class UsersController < ApplicationController
   def is_matching_login_user
     user = User.find(params[:id])
     unless user.id == current_user.id
-      flash[:alert] = "You cannot edit someone else's profile."
+      flash[:danger] = "You cannot edit someone else's profile."
       redirect_to user_path(current_user.id)
     end
   end

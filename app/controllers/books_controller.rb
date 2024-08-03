@@ -16,7 +16,7 @@ class BooksController < ApplicationController
     @new_book = Book.new(book_params)
     @new_book.user_id = current_user.id
     if @new_book.save
-      flash[:notice] = "Book was successfully created."
+      flash[:success] = "Book was successfully created."
       redirect_to book_path(@new_book.id)
     else
       @books = Book.all
@@ -29,7 +29,7 @@ class BooksController < ApplicationController
 
   def update
     if @book.update(book_params)
-      flash[:notice] = "Book was successfully updated."
+      flash[:success] = "Book was successfully updated."
       redirect_to book_path(@book.id)
     else
       render :edit
@@ -50,7 +50,7 @@ class BooksController < ApplicationController
   def authorize_user
     @book = Book.find(params[:id])
     unless @book.user == current_user
-      flash[:alert] = "You are not the owner of this post."
+      flash[:danger] = "You are not the owner of this post."
       redirect_to books_path
     end
   end
